@@ -56,7 +56,7 @@
                             </div>
                             @endforeach
                             @else
-                            <div class="alert alert-success">No shows were found!</div>
+                            <div class="alert alert-danger">No shows were found!</div>
                             @endif
 
                         </div>

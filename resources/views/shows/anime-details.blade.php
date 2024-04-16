@@ -9,6 +9,7 @@
                     <div class="col-lg-12">
                         <div class="breadcrumb__links">
                             <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                            <a href="{{route('category',$anime->genre)}}">{{$anime->genre}}</a>
                             <span>{{$anime->genre}}</span>
                         </div>
                     </div>
