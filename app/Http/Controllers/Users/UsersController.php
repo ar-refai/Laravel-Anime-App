@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
     public function followedShows() {
+
         $user = User::find(Auth::user()->id);
         $forYouShows = Show::select()->orderBy('id','desc')->take(3)->get();
         $followedShows = $user->followedShows()->get();

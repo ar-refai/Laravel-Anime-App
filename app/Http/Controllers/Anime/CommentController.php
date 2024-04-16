@@ -30,6 +30,9 @@ class CommentController extends Controller
         $commentsNumber = Comments::select('*')->where('show_id',$id)->count();
 
         $viewsCount = View::where('show_id',$id)->count();
+        if(!Auth::check())
+            return redirect()->route('login');
+        else
         $validateFollowing = Following::where('user_id',Auth::user()->id)
         ->where('show_id',$id)
         ->count();

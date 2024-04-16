@@ -28,49 +28,49 @@ Route::get(
             ->name('home');
 
 
-Route::group(['prefix','shows'],function (){
+Route::group(['prefix'=>'shows'],function (){
 
 // EveryShow Single page
 Route::get(
-    'shows/anime-details/{id}',
+    '/anime-details/{id}',
     [App\Http\Controllers\Anime\AnimeController::class, 'animeDetails'])
     ->name('anime-details');
 
 // Comments route
 Route::post(
-    'shows/anime-details/{id}',
+    '/anime-details/{id}',
     [App\Http\Controllers\Anime\CommentController::class, 'storeComment'])
     ->name('comment');
 
 // Follownig Shows
 Route::post(
-    'shows/show-follow/{id}',
+    '/show-follow/{id}',
     [App\Http\Controllers\Anime\AnimeController::class, 'followExc'])
     ->name('follow');
 
 // Episodes route
 Route::get(
-    'shows/anime-watching/{show_id}/{episode_id}',
+    '/anime-watching/{show_id}/{episode_id}',
     [App\Http\Controllers\Anime\AnimeController::class, 'animeWatching'])
     ->name('episode');
 
 
 // Categories route
 Route::get(
-'shows/categories/{category_title}',
+'/categories/{category_title}',
 [App\Http\Controllers\Anime\AnimeController::class, 'category'])
 ->name('category');
 
 
 // Following shows route
 Route::get(
-'shows/users/followed-shows',
+'/users/followed-shows',
 [App\Http\Controllers\Users\UsersController::class, 'followedShows'])
-->name('followed');
+->name('followed')->middleware('auth:web');
 
 // Categories route
 Route::post(
-'shows/search',
+'/search',
 [App\Http\Controllers\Anime\AnimeController::class, 'searchShows'])
 ->name('search');
 

@@ -121,15 +121,22 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 ">
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav d-flex flex-row gap-4 align-items-start ms-auto mt-3 text-white">
+                        <ul class="navbar-nav d-flex flex-xl-row flex-lg-column gap-4 align-items-center ms-auto mt-3 text-white ">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
-                                    <li class="nav-item">
-                                        <a style="margin-right:100px; color:#ffffff;" class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                    </li>
+                                <li class="nav-item m-auto">
+                                    <form method="POST" action="{{route('search')}}" class="form-inline my-2 my-lg-0">
+                                        @csrf
+                                        <input class="form-control w-100 py-2 m-auto" name='show' type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </li>
+                                <li class="nav-item border rounded px-2 text-center m-auto">
+                                    <a style="color:#ffffff;" class="nav-link py-1" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+
                                 @endif
 
                                 {{-- @if (Route::has('register'))
